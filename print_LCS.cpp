@@ -51,6 +51,15 @@ public:
         int i = n, j = m;
         while (i > 0 && j > 0)
         {
+            /*
+ When both i-- and j-- are executed, it means that the current characters in both strings (text1[i-1] and text2[j-1]) are equal. Logically, this step is taken because:
+
+The character at this position is part of the Longest Common Subsequence (LCS).
+To continue building the LCS, we need to move diagonally up-left in the DP table, which corresponds to decreasing both i and j by 1.
+This ensures we check the previous characters in both strings for further matches.
+In summary:
+We move both i-- and j-- when a match is found because we have included that character in the LCS and now need to look for the next match in the remaining (previous) parts of both strings.
+            */
             if (text1[i - 1] == text2[j - 1])
             {
                 lcs_str[len - 1] = text1[i - 1];
